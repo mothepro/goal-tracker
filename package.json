@@ -47,6 +47,7 @@
     "typescript": "^3.7.4"
   },
   "dependencies": {
+    "kv-storage-polyfill": "^2.0.0",
     "lit-element": "^2.2.1"
   }
 }
