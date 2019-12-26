@@ -1,52 +1,74 @@
 import { customElement, LitElement, html } from 'lit-element'
 import storage from 'std:kv-storage'
+import '@material/mwc-snackbar'
+import './src/diary-tracker.js'
 import './src/mood-tracker.js'
 
-const today = new Date
-if (today.getHours() <= 5) // before 5 A.M.
-  today.setDate(today.getDate() - 1)
-today.setHours(0)
-today.setMinutes(0)
-today.setSeconds(0)
-
 interface Diary {
-  mood: string
+  mood?: string
+  text?: string
 }
 
 @customElement('goal-tracker')
 export default class extends LitElement {
   private diary?: Diary
 
+  private today = new Date
+
   private finishedSaving = false
 
   async connectedCallback() {
     super.connectedCallback()
-    this.diary = await storage.get(today.toDateString()) as unknown as Diary
+
+    if (this.today.getHours() <= 5) // before 5 A.M.
+      this.today.setDate(this.today.getDate() - 1)
+    this.today.setHours(0)
+    this.today.setMinutes(0)
+    this.today.setSeconds(0)
+
+    this.diary = await storage.get(this.today.toDateString()) as unknown as Diary
+    this.requestUpdate()
   }
 
-  private readonly chooseMood = (event: CustomEvent<string>) => {
+  private readonly chooseMood = ({ detail }: CustomEvent<string>) => {
     this.diary = {
       ...this.diary,
-      mood: event.detail,
+      mood: detail,
+    }
+    this.save()
+  }
+
+  private readonly updateDiary = ({ detail }: CustomEvent<string>) => {
+    this.diary = {
+      ...this.diary,
+      text: detail,
     }
     this.save()
   }
 
   private readonly save = async () => {
-    await storage.set(today.toDateString(), this.diary)
+    await storage.set(this.today.toDateString(), this.diary)
     this.finishedSaving = true
     await this.requestUpdate()
     this.finishedSaving = false
   }
 
   readonly render = () => html`
-    <mood-tracker
-      .today=${today}
-      @choose=${this.chooseMood}
-    ></mood-tracker>
-    <mwc-snackbar
+    ${this.diary?.mood
+      ? html`
+        <diary-tracker
+          mood=${this.diary.mood}
+          default=${this.diary.text}
+          @new-text=${this.updateDiary}
+        ></diary-tracker>`
+      : html`
+        <mood-tracker
+          @choose=${this.chooseMood}
+        ></mood-tracker>
+    `}
+    <!-- <mwc-snackbar
       labelText="Saved."
-      ?isopen=${this.finishedSaving}
-    ></mwc-snackbar>
+      ?isOpen=${this.finishedSaving}
+    ></mwc-snackbar> -->
   `
 }
