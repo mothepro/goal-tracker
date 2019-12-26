@@ -1,14 +1,29 @@
-
 {
-	"imports": {
+  "imports": {
+    "@material/mwc-button/": "https://unpkg.com/@material/mwc-button@0.12.0/",
+    "@material/mwc-button": "https://unpkg.com/@material/mwc-button@0.12.0/mwc-button.js",
+    "@material/mwc-fab/": "https://unpkg.com/@material/mwc-fab@0.12.0/",
+    "@material/mwc-fab": "https://unpkg.com/@material/mwc-fab@0.12.0/mwc-fab.js",
+    "@material/mwc-ripple/": "https://unpkg.com/@material/mwc-ripple@0.12.0/",
+    "@material/mwc-ripple": "https://unpkg.com/@material/mwc-ripple@0.12.0/mwc-ripple.js",
+    "@material/ripple/": "https://unpkg.com/@material/ripple@4.0.0/",
+    "@material/ripple": "https://unpkg.com/@material/ripple@4.0.0/index.js",
+    "@material/dom/": "https://unpkg.com/@material/dom@4.0.0/",
+    "@material/dom": "https://unpkg.com/@material/dom@4.0.0/index.js",
+    "@material/base/": "https://unpkg.com/@material/base@4.0.0/",
+    "@material/base": "https://unpkg.com/@material/base@4.0.0/index.js",
+    "@webcomponents/webcomponentsjs/": "https://unpkg.com/@webcomponents/webcomponentsjs@2.4.0/",
+    "@webcomponents/webcomponentsjs": "https://unpkg.com/@webcomponents/webcomponentsjs@2.4.0/webcomponents-bundle.js",
+    "kv-storage-polyfill/": "https://unpkg.com/kv-storage-polyfill@2.0.0/",
+    "kv-storage-polyfill": "https://unpkg.com/kv-storage-polyfill@2.0.0/dist/kv-storage-polyfill.mjs",
     "lit-element/": "https://unpkg.com/lit-element@2.2.1/",
     "lit-element": "https://unpkg.com/lit-element@2.2.1/lit-element.js",
     "lit-html/": "https://unpkg.com/lit-html@1.1.2/",
     "lit-html": "https://unpkg.com/lit-html@1.1.2/lit-html.js",
+    "tslib": "https://unpkg.com/tslib@1.10.0/tslib.es6.js",
     "std:kv-storage": [
       "std:kv-storage",
       "https://unpkg.com/kv-storage-polyfill@2.0.0/dist/kv-storage-polyfill.mjs"
     ]
-	}
+  }
 }
-
