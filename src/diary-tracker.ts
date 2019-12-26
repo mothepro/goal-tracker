@@ -30,7 +30,7 @@ export default class extends LitElement {
       fullWidth
       placeholder="Reasons for feeling ${this.mood} today"
       @input=${this.delayedInput(1000)}
-      .value=${this.placeholder}
+      value=${this.placeholder || ''}
     ></mwc-textarea>
   `
 }
