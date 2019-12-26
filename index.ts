@@ -19,9 +19,9 @@ export default class extends LitElement {
 
   private finishedSaving = false
 
-  protected firstUpdated = async () => {
+  async connectedCallback() {
+    super.connectedCallback()
     this.diary = await storage.get(today.toDateString()) as unknown as Diary
-    this.performUpdate()
   }
 
   private readonly chooseMood = (event: CustomEvent<string>) => {
@@ -35,7 +35,7 @@ export default class extends LitElement {
   private readonly save = async () => {
     await storage.set(today.toDateString(), this.diary)
     this.finishedSaving = true
-    await this.performUpdate()
+    await this.requestUpdate()
     this.finishedSaving = false
   }
 

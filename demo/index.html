@@ -6,8 +6,17 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Goal Tracker Demo</title>
-  <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500" rel="stylesheet">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500">
   <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons&display=block">
+  <link rel="stylesheet" href="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.css">
+  <style>
+    body {
+      background-size: cover;
+      background-attachment: fixed;
+      background-image: url(./bg.png);
+      background-color: #499cb9;
+    }
+  </style>
   <script type="module" src="//unpkg.com/es-module-shims@0.4.6/dist/es-module-shims.min.js"></script>
   <script type="importmap-shim" src="import-map.json"></script>
   <!-- Production -->
@@ -19,6 +28,7 @@
 </head>
 
 <body>
+  <h1 class="center mdc-typography--headline1">Mood Monitor</h1>
   <goal-tracker></goal-tracker>
 </body>
 
