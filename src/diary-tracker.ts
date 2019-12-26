@@ -11,12 +11,10 @@ export default class extends LitElement {
   @property({ type: String })
   private mood!: string
 
-  /** Emits event after no changes have been made for 1 second. */
+  /** Emits event after no inputs have been made for `delayMs`. */
   private delayedInput = (delayMs: number) => ({ target }: InputEvent & { target: EventTarget & { value: string } }) => {
-    if (this.handle) {
+    if (this.handle)
       clearTimeout(this.handle)
-      delete this.handle
-    }
 
     this.handle = setTimeout(() => {
       this.dispatchEvent(new CustomEvent('new-text', { detail: target?.value }))

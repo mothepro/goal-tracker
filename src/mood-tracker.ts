@@ -1,4 +1,4 @@
-import { customElement, LitElement, html, property } from 'lit-element'
+import { customElement, LitElement, html } from 'lit-element'
 import '@material/mwc-fab'
 
 @customElement('mood-tracker')

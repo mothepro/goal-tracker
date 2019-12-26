@@ -30,23 +30,12 @@ export default class extends LitElement {
     this.requestUpdate()
   }
 
-  private readonly chooseMood = ({ detail }: CustomEvent<string>) => {
+  private readonly updateField = (field: string) => async ({ detail }: CustomEvent<string>) => {
     this.diary = {
       ...this.diary,
-      mood: detail,
+      [field]: detail,
     }
-    this.save()
-  }
-
-  private readonly updateDiary = ({ detail }: CustomEvent<string>) => {
-    this.diary = {
-      ...this.diary,
-      text: detail,
-    }
-    this.save()
-  }
-
-  private readonly save = async () => {
+    
     await storage.set(this.today.toDateString(), this.diary)
     this.finishedSaving = true
     await this.requestUpdate()
@@ -59,16 +48,16 @@ export default class extends LitElement {
         <diary-tracker
           mood=${this.diary.mood}
           .placeholder=${this.diary.text}
-          @new-text=${this.updateDiary}
+          @new-text=${this.updateField('text')}
         ></diary-tracker>`
       : html`
         <mood-tracker
-          @choose=${this.chooseMood}
+          @choose=${this.updateField('mood')}
         ></mood-tracker>
     `}
-    <!-- <mwc-snackbar
+    <mwc-snackbar
       labelText="Saved."
       ?isOpen=${this.finishedSaving}
-    ></mwc-snackbar> -->
+    ></mwc-snackbar>
   `
 }
