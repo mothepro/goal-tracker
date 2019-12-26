@@ -18,7 +18,7 @@
   "scripts": {
     "build": "npm run build:npm && npm run build:esm",
     "pretest": "npm run build:npm",
-    "test": "mocha -r should -r should-sinon dist/npm/test/*.js",
+    "test": "echo 'no tests'",
     "prerelease": "npm run build:npm && npm run deploy",
     "release": "np",
     "importmap": "importly --host unpkg < package.json > demo/import-map.json",
@@ -29,7 +29,7 @@
     "html:prod:shim": "replace 'prod-only type=\"' 'prod-only type=\"prod-only-' demo/index.html",
     "predeploy": "npm run build:esm && npm run html:dev:shim && npm run html:prod:real",
     "postdeploy": "npm run html:dev:real && npm run html:prod:shim",
-    "deploy": "gh-pages -d demo -v *.ts",
+    "deploy": "gh-pages -d demo",
     "build:npm": "tsc",
     "build:esm": "tsc -p tsconfig.esm.json"
   },
