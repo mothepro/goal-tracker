@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Goal Tracker Demo</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons&display=block">
+  <link rel="stylesheet" href="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.css">
+  <style>
+    body {
+      background-size: cover;
+      background-attachment: fixed;
+      background-image: url(./bg.png);
+      background-color: #499cb9;
+      padding: 3em;
+      text-align: center;
+    }
+  </style>
+  <script type="module" src="//unpkg.com/es-module-shims@0.4.6/dist/es-module-shims.min.js"></script>
+  <script type="importmap-shim" src="import-map.json"></script>
+  <!-- Production -->
+  <script prod-only type="module-shim" src="//unpkg.com/@mothepro/goal-tracker/dist/esm/index.js"></script>
+  <!-- Development -->
+  <script dev-only type="dev-only-application/javascript" src="//unpkg.com/typescript@3.7.4/lib/typescript.js"></script>
+  <script dev-only type="dev-only-module" src="//unpkg.com/@mothepro/ts-module-shim/dist/esm/index.js"></script>
+  <script dev-only type="dev-only-module-shim" src="../index.ts"></script>
+</head>
+
+<body>
+  <h1 class="mdc-typography--headline1">Mood Monitor</h1>
+  <goal-tracker></goal-tracker>
+</body>
+
+</html>
