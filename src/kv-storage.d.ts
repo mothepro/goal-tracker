@@ -20,8 +20,7 @@ declare module 'std:kv-storage' {
     ArrayBuffer |
     DataView |
     Value[] |
-    { [key: string]: Value } |
-    { [key: number]: Value }
+    object
   
   export class storageArea {
     set(key: Key, value: Value): Promise<void>
