@@ -58,7 +58,7 @@ export default class extends LitElement {
       ? html`
         <diary-tracker
           mood=${this.diary.mood}
-          default=${this.diary.text}
+          .placeholder=${this.diary.text}
           @new-text=${this.updateDiary}
         ></diary-tracker>`
       : html`

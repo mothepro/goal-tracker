@@ -6,7 +6,7 @@ export default class extends LitElement {
   private handle?: NodeJS.Timeout
 
   @property({ type: String })
-  private default?: string
+  private placeholder?: string
   
   @property({ type: String })
   private mood!: string
@@ -30,7 +30,7 @@ export default class extends LitElement {
       fullWidth
       placeholder="Reasons for feeling ${this.mood} today"
       @input=${this.delayedInput(1000)}
-      value=${this.default || ''}
+      .value=${this.placeholder}
     ></mwc-textarea>
   `
 }
